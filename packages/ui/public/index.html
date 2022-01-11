@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>Alpha DAO NFT Wizard</title>
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@alpha_kcc">
+  <meta name="twitter:title" content="Alpha DAO NFT Wizard">
+  <meta name="twitter:description" content="An interactive NFT minter based on OpenZeppelin Contracts.">
+  <meta name="twitter:image" content="/tw-card.png">
+
+  <!-- Favicons -->
+  <link rel='icon' type='image/png' href='/favicons/favicon.ico'>  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Scripts and CSS -->
+  <link rel="preload" href="/fonts/silka-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/silka-semibold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel='stylesheet' href='/standalone.css'>
+  <script async src='/build/embed.js'></script>
+</head>
+<body>
+  <div class="hero">
+    <a href="https://alphadao.money/">
+      <img src="/logo.svg" alt="Alpha DAO">
+    </a>
+    <h1>Create NFT</h1>
+    <p>Efficient, convenient, and practical. Quickly create standard KRC721 compliant NFT's.</p>
+  </div>
+
+  <div class="wizard-container">
+    <oz-wizard class="wizard" data-sync-url="fragment" data-tab="ERC721"></oz-wizard>
+  </div>
+
+  <div class="faq">
+    <ul>
+      <li>
+        <h3>What is this?</h3>
+        <p>Alpha DAO's NFT wizard is an interface to interactively build a KRC-721 smart contract out of components from OpenZeppelin Contracts.</p>
+      </li>
+      <li>
+        <h3>How can I use this?</h3>
+        <p>Select the parameters and desired features (token name, symbol, premint amount, access control, etc.), and NFT minter will generate all of the code necessary. The resulting code is ready to be compiled and deployed, or it can serve as a starting point and customized further with application specific logic.</p>
+      </li>
+      <li>
+        <h3>What can I do with the code?</h3>
+        <p>There’s several options for how to proceed with it that will be useful in different circumstances. “Copy to Clipboard” as well as the standard “Download” will work well with local development workflows (such as using Hardhat or Truffle), whereas “Open in Remix” will be ideal for anyone working on Remix IDE.</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="defender">
+    <h2>Buy ALPHA on KuSwap</h2>
+    <p></p>
+    <a href="https://kuswap.finance/#/swap?outputCurrency=0x0490c1076552ed3c91876ead9f6a547b389e69d4">Buy</a>
+  </div>
+
+  <footer>
+    <div class="footer-icons">
+      <a href="https://t.me/alphadao1337" target="_blank"><img src="icons/forum.svg" alt="forum"></a>
+      <a href="https://docs.alphadao.money" target="_blank"><img src="icons/docs.svg" alt="forum"></a>
+      <a href="https://github.com/cusdt-LINK" target="_blank"><img src="icons/github.svg" alt="forum"></a>
+      <a href="https://twitter.com/alpha_kcc/" target="_blank"><img src="icons/twitter.svg" alt="forum"></a>
+    </div>
+    <p>© <a href="https://alphadao.money" target="_blank">Alpha DAO</a> 2022 |&nbsp;<a href="https://docs.alphadao.money" target="_blank"></a> |&nbsp;<a href="https://openzeppelin.com/tos" target="_blank"></a></p>
+  </footer>
+
+  <!-- Hidden form necessary for Netlify Forms -->
+  <form hidden action="/config" method="POST" name="config" data-netlify="true" data-netlify-honeypot="other">
+    <input type="text" name="instance">
+    <input type="text" name="data">
+    <input type="text" name="action">
+    <input type="text" name="other">
+    <input type="submit">
+  </form>
+<!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com -->
+<script type="text/javascript" src="https://c295b7.openzeppelin.com/app/js/api.min.js" data-account="144063" data-user="131584" data-api="campaigns" async></script>
+<!-- / OptinMonster -->
+</body>
+</html>
+

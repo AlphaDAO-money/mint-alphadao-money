@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "github>OpenZeppelin/code-style"
+  ],
+  "packageRules": [
+    {
+      "matchPackagePrefixes": ["@openzeppelin/"],
+      "schedule": ["at any time"]
+    }
+  ]
+}
