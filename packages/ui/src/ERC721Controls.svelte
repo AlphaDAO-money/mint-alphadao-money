@@ -10,9 +10,9 @@
   
 
   export const opts: Required<KindedOptions['ERC721']> = {
-    kind: 'KRC721',
-    name: 'AlphaDAO',
-    symbol: 'ALPHA',
+    kind: 'ERC721',
+    name: 'MyToken',
+    symbol: 'MTK',
     baseUri: '',
     enumerable: false,
     uriStorage: false,
