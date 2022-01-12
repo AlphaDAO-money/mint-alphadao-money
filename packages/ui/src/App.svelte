@@ -27,7 +27,7 @@
 
     const dispatch = createEventDispatcher();
 
-    export let tab: Kind = 'ERC20';
+    export let tab: Kind = 'ERC721';
     $: {
       tab = sanitizeKind(tab);
       dispatch('tab-change', tab);
@@ -100,18 +100,18 @@
   <div class="header flex flex-row justify-between">
     <div class="tab overflow-hidden">
       <OverflowMenu>
-        <button class:selected={tab === 'ERC20'} on:click={() => tab = 'ERC20'}>
+        <!-- <button class:selected={tab === 'ERC20'} on:click={() => tab = 'ERC20'}>
           ERC20
-        </button>
+        </button> -->
         <button class:selected={tab === 'ERC721'} on:click={() => tab = 'ERC721'}>
           ERC721
         </button>
-        <button class:selected={tab === 'ERC1155'} on:click={() => tab = 'ERC1155'}>
+        <!-- <button class:selected={tab === 'ERC1155'} on:click={() => tab = 'ERC1155'}>
           ERC1155
         </button>
         <button class:selected={tab === 'Governor'} on:click={() => tab = 'Governor'}>
           Governor
-        </button>
+        </button> -->
       </OverflowMenu>
     </div>
 
@@ -178,7 +178,7 @@
       </div>
       <div class="controls-footer">
         <a href="https://alphadao.money/" target="_blank">
-          <ForumIcon/> 
+          <ForumIcon/>
         </a>
         <a href="https://docs.alphadao.com/" target="_blank">
           <DocsIcon/> Docs
