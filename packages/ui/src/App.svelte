@@ -1,8 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-
     import hljs from './highlightjs';
-
     import ERC20Controls from './ERC20Controls.svelte';
     import ERC721Controls from './ERC721Controls.svelte';
     import ERC1155Controls from './ERC1155Controls.svelte';
@@ -17,29 +15,21 @@
     import Dropdown from './Dropdown.svelte';
     import OverflowMenu from './OverflowMenu.svelte';
     import Tooltip from './Tooltip.svelte';
-
     import type { KindedOptions, Kind, Contract, OptionsErrorMessages } from '@openzeppelin/wizard';
     import { ContractBuilder, buildGeneric, printContract, printContractVersioned, sanitizeKind, OptionsError } from '@openzeppelin/wizard';
     import { postConfig } from './post-config';
     import { remixURL } from './remix';
-
     import { saveAs } from 'file-saver';
-
     const dispatch = createEventDispatcher();
-
-    export let tab: Kind = 'ERC721';
+    export let tab: Kind = 'ERC20';
     $: {
       tab = sanitizeKind(tab);
       dispatch('tab-change', tab);
     };
-
     let allOpts: { [k in Kind]?: Required<KindedOptions[k]> } = {};
     let errors: { [k in Kind]?: OptionsErrorMessages } = {};
-
     let contract: Contract = new ContractBuilder('MyToken');
-
     $: opts = allOpts[tab];
-
     $: {
       if (opts) {
         try {
@@ -54,17 +44,14 @@
         }
       }
     }
-
     $: code = printContract(contract);
     $: highlightedCode = hljs.highlight('solidity', code).value;
-
     const copyHandler = async () => {
       await navigator.clipboard.writeText(code);
       if (opts) {
         await postConfig(opts, 'copy');
       }
     };
-
     const remixHandler = async (e: MouseEvent) => {
       e.preventDefault();
       if ((e.target as Element)?.classList.contains('disabled')) return;
@@ -74,7 +61,6 @@
         await postConfig(opts, 'remix');
       }
     };
-
     const downloadNpmHandler = async () => {
       const blob = new Blob([code], { type: 'text/plain' });
       if (opts) {
@@ -82,9 +68,7 @@
         await postConfig(opts, 'download-npm');
       }
     };
-
     const zipModule = import('@openzeppelin/wizard/zip');
-
     const downloadVendoredHandler = async () => {
       const { zipContract } = await zipModule;
       const zip = zipContract(contract);
@@ -95,32 +79,29 @@
       }
     };
 </script>
-
 <div class="container flex flex-col flex-row-gap-4 p-4">
   <div class="header flex flex-row justify-between">
     <div class="tab overflow-hidden">
       <OverflowMenu>
-        <!-- <button class:selected={tab === 'ERC20'} on:click={() => tab = 'ERC20'}>
+        <button class:selected={tab === 'ERC20'} on:click={() => tab = 'ERC20'}>
           ERC20
-        </button> -->
+        </button>
         <button class:selected={tab === 'ERC721'} on:click={() => tab = 'ERC721'}>
           ERC721
         </button>
-        <!-- <button class:selected={tab === 'ERC1155'} on:click={() => tab = 'ERC1155'}>
+        <button class:selected={tab === 'ERC1155'} on:click={() => tab = 'ERC1155'}>
           ERC1155
         </button>
         <button class:selected={tab === 'Governor'} on:click={() => tab = 'Governor'}>
           Governor
-        </button> -->
+        </button>
       </OverflowMenu>
     </div>
-
     <div class="action flex flex-row flex-col-gap-2 flex-shrink-0">
       <button class="action-button" on:click={copyHandler}>
         <CopyIcon />
         Copy to Clipboard
       </button>
-
       <Tooltip let:trigger disabled={!opts?.upgradeable} theme="light-red border" interactive hideOnClick={false}>
         <button use:trigger class="action-button" class:disabled={opts?.upgradeable} on:click={remixHandler}>
           <RemixIcon />
@@ -134,13 +115,11 @@
           <a href="#" on:click={remixHandler}>Open in Remix anyway</a>.
         </div>
       </Tooltip>
-
       <Dropdown let:active>
         <button class="action-button" class:active slot="button">
           <DownloadIcon />
           Download
         </button>
-
         <button class="download-option" on:click={downloadNpmHandler}>
           <FileIcon />
           <div class="download-option-content">
@@ -149,7 +128,6 @@
             <p>Simple to receive updates.</p>
           </div>
         </button>
-
         <button class="download-option" on:click={downloadVendoredHandler}>
           <ZipIcon />
           <div class="download-option-content">
@@ -161,7 +139,6 @@
       </Dropdown>
     </div>
   </div>
-
   <div class="flex flex-row flex-col-gap-4 flex-grow">
     <div class="controls w-64 flex flex-col flex-shrink-0 justify-between">
       <div class:display-none={tab !== 'ERC20'}>
