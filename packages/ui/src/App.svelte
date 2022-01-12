@@ -100,7 +100,7 @@
   <div class="header flex flex-row justify-between">
     <div class="tab overflow-hidden">
       <OverflowMenu>
-        <button class:selected={tab === 'ERC20'} on:click={() => tab = 'ERC20'} style="display: none;">
+        <button class:selected={tab === 'ERC20'} on:click={() => tab = 'ERC20'}>
           ERC20
         </button>
         <button class:selected={tab === 'ERC721'} on:click={() => tab = 'ERC721'}>
